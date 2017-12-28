@@ -1,0 +1,14 @@
+
+1. Using Separate Training and Test Data Sets
+
+a) Best Lambda's
+- Data Set 1, (100-10): 8
+- Data Set 2, (100-100): 0
+- Data Set 3, (1000-100): 27
+- Data Set 4, 50(1000-10): 8
+- Data Set 5, 100(1000-10): 8
+- Data Set 6, 150(1000-10): 8
+
+c) The reason why each of datasets 100-100, 50(1000)-100, and 100(1000)-100 generate abnormally large MSE scores when they’re not regularized, is that these datasets have a relatively small amount of instances (from 50 to 100 rows) which results in some features (predictive variables) receiving a disproportionate weight (i.e. overweighing, or overfitting). Although these hefty weights may be accurate within the confines of the training sets, they do not generalize well to the testing set. Regularization addresses this issue by penalizing the most substantial weight values in order to produce more conservative and appropriate weight values that generalize much better to new data.
+
+This is why regularization is particularly well suited to scenarios where our dataset is small.
