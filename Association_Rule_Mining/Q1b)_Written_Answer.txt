@@ -1,0 +1,16 @@
+Q1.b)
+
+If we pick one of the maximal sets {b,c} from L2, the association rules are as follows
+
+Let X = {bc}: 3
+
+Non-empty subsets of X are {b}: 3 and {c}: 6
+
+So, we get the following association rules for {b,c}
+
+1. {b} => {c} = (Support count of {b,c} / Support count of {b}) = 3/3 = 1.O
+
+2. {c} => {b} = (Support count of {b,c} / Support count of {c}) = 3/6 = 0.5
+
+Since the given confidence cut-off is 0.6, we would report only the first rule,
+which is {b} => {c}, confidence = 1.0
