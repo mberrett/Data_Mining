@@ -1,0 +1,56 @@
+3.
+
+a) 5 runs of SVM.
+
+Run # (Specifics) : Accuracy Score
+
+- First Run (PolyKernel, exponent 1): 84.75%
+- Second Run (PolyKernel, exponent 2): 95.74%
+- Third Run (PolyKernel, exponent 4): 93.49%
+- Fourth Run (RBFKernel gamma 0.01): 72.58%
+- Fifth Run (RBFKernel gamma 1.0): 90.31%
+
+b) Explain why some of the choices do not work well
+
+i) When it comes to the PolyKernel, the exponent controls the degree
+of the polynomial kernel, which transforms the feature space
+allowing for the learning of non-linear models.
+
+The most popular degree for the kernel is 2 (Quadratic), since higher
+exponents tend to overfit the training data (i.e. third run,
+exponent 4, accuracy 93.49%) and lower exponents don’t make much of a
+difference; in particular when the exponent is 1, the model
+becomes linear, and unless the fits a linear model, this approach
+is usually less effective than PolyKernel with exponents greater
+than or equal to 2 (PolyKernel with exponent 4 and exponent 2
+outperformed exponent 1: 93.49% and 95.49% vs. 84.75%).
+
+For this data the best model is the second run of the PolyKernel SVM,
+(accuracy 95.74).
+
+ii) When it comes to the RBF Kernel, gamma controls how far the influence of a
+single training instance goes; low values extend the range of influence,
+while high values reel it in and keep it close.
+
+The first run of the RBF Kernel SVM is less accurate than the second
+(72.58% vs. 90.31%, respectively), because its small gamma value (0.01)
+constrains the model by extending the influence of each particular training
+instance, preventing it from capturing the true complexity and shape of the data
+(too much bias).
+
+Conversely, the larger gamma value of the second run (1.0) allows the second model
+to better capture the true shape and complexity of the data by limiting the amount
+of influence each particular training instance has (providing more variance,
+which is what this data needed).
+
+iii) Choosing the right parameters and right kernel depends on the complexity
+and shape of the data. Although RBF Kernel SVM usually outperforms
+PolyKernel SVM, the latter was clearly a better fit for our data.
+
+iv) But ultimately, what generally matters more than choice
+of kernel is choice of parameter for a particular kernel. Case in point,
+PolyKernel with exponent 1 (Linear) outperforms RBF with gamma 0.01
+(84.74% vs. 72.58%); however, RBF Kernel with gamma 1.0 outperforms
+PolyKernel with exponent 1 (Linear) (90.31% vs. 84.74%); and in turn,
+PolyKernel with exponent 2 (Quadratic) outperforms RBF Kernel
+with gamma 1.0 (95.74% vs. 90.31%).
